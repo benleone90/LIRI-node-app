@@ -1,3 +1,7 @@
+// Require environment variables
 require("dotenv").config();
 
-var keys = require("../LIRI-node-app/keys.js");
+// Variables
+var fs = require("fs"); // Core node package for reading and writing files
+var keys = require("./keys.js"); //Spotify API Keys
+var spotify = new spotify(keys.spotify);
