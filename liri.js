@@ -134,25 +134,55 @@ function spotifyInfo(userQuery) {
 function movieInfo(userQuery) {
   if (userQuery === "") {
     userQuery = "Mr. Nobody";
+    fs.writeFileSync("log.txt", "");
     console.log(
-      "\nNo user input detected. You should watch Mr. Nobody! It's on Netflix!\r"
+      "\nNo user input detected. You should watch Mr. Nobody! But it's not on Netflix :(\r"
+    );
+    fs.appendFileSync(
+      "log.txt",
+      "No user input detected. You should watch Mr. Nobody! But it's not on Netflix :(\n"
     );
   }
   var queryURL =
     "http://www.omdbapi.com/?t=" + userQuery + "&y=&plot=short&apikey=trilogy";
 
   axios.get(queryURL).then(function(response) {
+    fs.writeFileSync("log.txt", "");
     console.log("\n----------------------MOVIE INFO-----------------------");
+    fs.appendFileSync(
+      "log.txt",
+      "----------------------MOVIE INFO-----------------------\n"
+    );
     console.log("Movie Title: " + response.data.Title);
+    fs.appendFileSync("log.txt", "Movie Title: " + response.data.Title + "\n");
     console.log("Year Released: " + response.data.Released);
+    fs.appendFileSync(
+      "log.txt",
+      "Year Released: " + response.data.Released + "\n"
+    );
     console.log("IMDB Rating: " + response.data.imdbRating + "/10");
+    fs.appendFileSync(
+      "log.txt",
+      "IMDB Rating: " + response.data.imdbRating + "/10" + "\n"
+    );
     console.log(
       response.data.Ratings[1].Source + ": " + response.data.Ratings[1].Value
     );
+    fs.appendFileSync(
+      "log.txt",
+      response.data.Ratings[1].Source +
+        ": " +
+        response.data.Ratings[1].Value +
+        "\n"
+    );
     console.log("Country: " + response.data.Country);
+    fs.appendFileSync("log.txt", "Country: " + response.data.Country + "\n");
     console.log("Languages: " + response.data.Language);
+    fs.appendFileSync("log.txt", "Languages: " + response.data.Language + "\n");
     console.log("Movie Plot: " + response.data.Plot);
+    fs.appendFileSync("log.txt", "Movie Plot: " + response.data.Plot + "\n");
     console.log("Actors: " + response.data.Actors);
+    fs.appendFileSync("log.txt", "Actors: " + response.data.Actors + "\n");
   });
 }
 function randomInfo() {
