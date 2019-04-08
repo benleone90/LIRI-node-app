@@ -93,7 +93,7 @@ function spotifyInfo(userQuery) {
   if (userQuery === "") {
     userQuery = "The Sign Ace of Base";
     console.log(
-      "No song selected! I think you wanted to search for this, right?\n"
+      "\nNo song selected! I think you wanted to search for this, right?\n"
     );
   }
   spotify
